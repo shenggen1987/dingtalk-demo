@@ -1,0 +1,10 @@
+var React    = require('react'),
+    ReactDOM = require('react-dom');
+
+var Tooltip = require('uxcore-tooltip');
+
+ReactDOM.render(
+  <Tooltip overlay="提示文字">
+    <span>鼠标移上来就会出现提示</span>
+  </Tooltip>
+, document.getElementById('react-container'));

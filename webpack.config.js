@@ -11,7 +11,13 @@ module.exports = {
   cache: true,
   entry: {
     main:  './src/index.jsx',
-    other: './src/other.jsx'
+    other: './src/other.jsx',
+    button: './src/button.jsx',
+    dialog: './src/dialog.jsx',
+    select: './src/select.jsx',
+    datepicker: './src/datepicker.jsx',
+    table: './src/table.jsx',
+    tablemock: './src/tablemock.jsx'
   },
   output: {
     path: 'public/build',
@@ -21,6 +27,14 @@ module.exports = {
     loaders: [
       {test: /\.jsx$/, loader: 'babel', exclude: /(node_modules|bower_components)/, query: { presets: ['react', 'es2015'] }},
       {test: /\.js$/, loader: 'babel', exclude: /(node_modules|bower_components)/, query: { presets: ['react', 'es2015'] }},
+      {
+          test: /\.css$/,
+          loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
+      }
     ]
   },
   plugins: [
