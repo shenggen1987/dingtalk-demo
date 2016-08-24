@@ -1,0 +1,11 @@
+$fontStack:    Helvetica, sans-serif;
+$primaryColor: #333;
+
+body {
+  font-family: $fontStack;
+  color: $primaryColor;
+}
+#react-container{
+	margin: 20px auto;
+	text-align: center;
+}
