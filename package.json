@@ -9,18 +9,11 @@
     "keymirror": "^0.1.1",
     "mongoose": "^4.5.10",
     "object-assign": "^4.0.1",
-    "rc-dialog": "^6.3.0",
-    "rc-form": "^0.17.2",
-    "rc-select": "^6.5.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "reqwest": "^2.0.5",
     "style-loader": "^0.13.1",
-    "underscore": "^1.8.3",
-    "uxcore": "^0.3.4",
-    "uxcore-button": "^0.4.5",
-    "uxcore-dialog": "^0.4.0",
-    "uxcore-tooltip": "^0.3.4"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

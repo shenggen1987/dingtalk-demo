@@ -1,6 +1,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DatePicker } from 'antd';
 import './components/antd/antd.css';
-ReactDOM.render(<DatePicker />, document.getElementById('react-container'));
+
+import { DatePicker } from 'antd';
+
+function onChange(value, dateString) {
+  console.log(value, dateString);
+}
+
+ReactDOM.render(<DatePicker onChange={onChange} />, document.getElementById('react-container'));
