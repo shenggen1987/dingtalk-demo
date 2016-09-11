@@ -27,5 +27,8 @@ router.get('/tablemock', function(req, res) {
   res.render('tablemock', { title: 'tablemock' });
 });
 
+router.get('/todo', function(req, res) {
+  res.render('todo', { title: 'todo' });
+});
 
 module.exports = router;

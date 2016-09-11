@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var env = process.env.NODE_ENV || 'dev';
+env = env === 'test' ? 'dev':env;
 
 var configStatic = require('../static_conf')[env];
 
