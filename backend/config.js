@@ -1,4 +1,4 @@
-var _ = require('underscore');
+var _ = require('lodash');
 var env = process.env.NODE_ENV || 'dev';
 env = env === 'test' ? 'dev':env;
 
