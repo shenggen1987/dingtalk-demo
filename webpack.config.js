@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var glob = require('glob');
+var path = require("path");
 
 var definePlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
@@ -19,22 +20,15 @@ var getEntry = function () {
           entry[n] = name;
         }
     });
-    // console.log(entry);
-    // {
-    //   main:  './src/index.jsx',
-    //   other: './src/other.jsx',
-    //   button: './src/button.jsx',
-    //   dialog: './src/dialog.jsx',
-    //   select: './src/select.jsx',
-    //   datepicker: './src/datepicker.jsx',
-    //   table: './src/table.jsx',
-    //   tablemock: './src/tablemock.jsx'
-    // }
     return entry;
 };
+//区分入口
+var entry = process.env.NODE_TYPE === 'dingmobile'? './src/entry.js' : './src/weixin/entry.js';
+var alias_js = process.env.NODE_TYPE === 'dingmobile'? '/src/components' : '/src/weixin/components';
 module.exports = {
+  // context: __dirname + "/src/weixin",
   cache: true,
-  entry: getEntry(),
+  entry: entry,
   output: {
     path: 'public/build',
     filename: '[name].js'
@@ -54,8 +48,30 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: "style!css!sass!styl"
+      },
+      {
+      loader: "babel-loader",
+
+        // Skip any files outside of your project's `src` directory
+        include: [
+          path.resolve(__dirname, "src"),
+        ],
+
+        // Only run `.js` and `.jsx` files through Babel
+        test: /\.jsx?$/,
+
+        // Options to configure babel with
+        query: {
+          plugins: ['transform-runtime'],
+          presets: ['es2015', 'stage-0', 'react'],
+        }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      js: path.join(__dirname, alias_js)
+    }
   },
   plugins: [
     definePlugin,
