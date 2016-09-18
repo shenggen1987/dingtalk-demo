@@ -25,12 +25,13 @@ var getEntry = function () {
 //区分入口
 var entry = process.env.NODE_TYPE === 'dingmobile'? './src/entry.js' : './src/weixin/entry.js';
 var alias_js = process.env.NODE_TYPE === 'dingmobile'? '/src/components' : '/src/weixin/components';
+var output_path = process.env.NODE_TYPE === 'dingmobile'? 'public/build' : 'public/buildweixin';
 module.exports = {
   // context: __dirname + "/src/weixin",
   cache: true,
   entry: entry,
   output: {
-    path: 'public/build',
+    path: output_path,
     filename: '[name].js'
   },
   module: {

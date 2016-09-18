@@ -1,3 +1,4 @@
+import React from 'react';
 // 父组件
 var Detail = React.createClass({
   getInitialState: function () {

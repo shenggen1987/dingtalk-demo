@@ -11,6 +11,6 @@ module.exports = {
     				secret: 'lB_t9hN60kOat5v81sWGwv_QKJJPE4OjoAJHI20SsFWW1-R80PeNlM6c1vOLDXaT'
         	}
         },
-        project: 'wiexin' //dingtalk or weixin
+        project: 'dingtalk' //dingtalk or weixin
     }
 };
