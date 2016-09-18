@@ -4,37 +4,69 @@ import Dialog from 'js/dialog/index'
 
 const {Alert, Confirm} = Dialog;
 export default class Index extends React.Component {
-	state = {
-      showAlert: false,
-      showConfirm: false,
-      alert: {
-          title: '标题标题',
-          buttons: [
-              {
-                  label: '好的',
-                  onClick: this.hideAlert.bind(this)
-              }
-          ]
-      },
-      confirm: {
-          title: '标题标题',
-          buttons: [
-              {
-                  type: 'default',
-                  label: '好的',
-                  onClick: this.hideConfirm.bind(this)
-              },
-              {
-                  type: 'primary',
-                  label: '我愿意',
-                  onClick: this.hideConfirm.bind(this)
-              }
-          ]
-      }
+	// state = {
+ //      showAlert: false,
+ //      showConfirm: false,
+ //      alert: {
+ //          title: '标题标题',
+ //          buttons: [
+ //              {
+ //                  label: '好的',
+ //                  onClick: this.hideAlert.bind(this)
+ //              }
+ //          ]
+ //      },
+ //      confirm: {
+ //          title: '标题标题',
+ //          buttons: [
+ //              {
+ //                  type: 'default',
+ //                  label: '好的',
+ //                  onClick: this.hideConfirm.bind(this)
+ //              },
+ //              {
+ //                  type: 'primary',
+ //                  label: '我愿意',
+ //                  onClick: this.hideConfirm.bind(this)
+ //              }
+ //          ]
+ //      }
+ //  }
+  constructor(props) {
+      super(props);
+      this.state = {
+        showAlert: false,
+        showConfirm: false,
+        alert: {
+            title: '标题标题',
+            buttons: [
+                {
+                    label: '好的',
+                    onClick: this.hideAlert.bind(this)
+                }
+            ]
+        },
+        confirm: {
+            title: '标题标题',
+            buttons: [
+                {
+                    type: 'default',
+                    label: '好的',
+                    onClick: this.hideConfirm.bind(this)
+                },
+                {
+                    type: 'primary',
+                    label: '我愿意',
+                    onClick: this.hideConfirm.bind(this)
+                }
+            ]
+        }
+      };
   }
 
   showAlert() {
-        this.setState({showAlert: true});
+      this.setState({showAlert: true});
+      this.setState({showConfirm: false});
   }
 
   hideAlert() {
@@ -43,6 +75,7 @@ export default class Index extends React.Component {
 
   showConfirm() {
       this.setState({showConfirm: true});
+      this.setState({showAlert: false});
   }
 
   hideConfirm() {
@@ -58,10 +91,10 @@ export default class Index extends React.Component {
       <div style={{padding:'20px'}}>
       		<Button onClick={this.showAlert.bind(this)}>警告</Button><br/>
       		<Button type="primary" onClick={this.showConfirm.bind(this)}>确认</Button><br/>
-      		<Alert title={this.state.alert.title} buttons={this.state.alert.buttons} show={this.state.showAlert}>
+      		<Alert title={this.state.alert.title} buttons={this.state.alert.buttons} show={this.state.showAlert} hideAlert1={this.hideAlert1}>
               警告内容
           </Alert>
-          <Confirm title={this.state.confirm.title} buttons={this.state.confirm.buttons} show={this.state.showConfirm}>
+          <Confirm title={this.state.confirm.title} buttons={this.state.confirm.buttons} show={this.state.showConfirm} hideConfirm1={this.hideConfirm1}>
               确认内容？
           </Confirm>
           <Button >默认按钮</Button> <br/>

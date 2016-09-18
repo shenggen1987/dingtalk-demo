@@ -1,7 +1,7 @@
 const { Router, Route, IndexRoute, Link, hashHistory } = ReactRouter;
 
 import Index from './pages/index';
-import Detail from './detail';
+import Detail from './pages/detail';
 
 class App extends React.Component {
   render() {

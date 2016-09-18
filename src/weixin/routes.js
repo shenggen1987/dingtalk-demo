@@ -8,6 +8,7 @@ import {
 } from 'react-router';
 
 import Index from '../pages/index/index';
+import Detail from '../pages/Detail/index';
 
 class App extends React.Component {
   render() {
@@ -23,6 +24,7 @@ const routes = (
   <Router history={hashHistory}>
 	  <Route path="/" component={App}>
 	  	<IndexRoute component={Index}/>
+      <Route path="/detail" component={Detail}/>
 	  </Route>
 	</Router>
 );

@@ -14,23 +14,12 @@ var crypto = require('crypto');
 const OAPI_HOST = 'https://oapi.dingtalk.com';
 const corpId = config.dingtalk.jsapi.corpId;
 const secret = config.dingtalk.jsapi.secret;
-/* GET home page. */
+/* GET home page. dingtalk router */
 router.get('/', function(req, res) {
 	var nonceStr = 'abcdefg';
   var timeStamp = new Date().getTime();
   var signedUrl = decodeURIComponent(this.href);
 
-  // function g() {
-  //     return co(function *() {
-  //         // var accessToken = (yield invoke('/gettoken', {corpid: corpId, corpsecret: secret}))['access_token'];
-  //         // var ticket = (yield invoke('/get_jsapi_ticket', {type: 'jsapi', access_token: accessToken}))['ticket'];
-
-
-          
-  //     }).catch(function(err) {
-  //         console.log(err);
-  //     });
-  // }
   // async.waterfall([
 		// 	function(callback){
 		// 		invoke('/gettoken', {corpid: corpId, corpsecret: secret}, callback)
@@ -55,10 +44,11 @@ router.get('/', function(req, res) {
   //       };
   //       res.render('index', { title: 'Main', config: JSON.stringify(result)});
 		// });
+
   	res.render('index', 
   		{ 
   			title: 'Main', 
-  			config: '{"signature":"f034c125ba4e065af7d435917f683f0361ee5cbf","nonceStr":"abcdefg","timeStamp":1474007087186,"corpId":"dingbb4b33cbdeb6e17035c2f4657eb6378f"}'
+  			config: '{"signature":"98fbc01b8e962c708ab6f5477bb9b7dde2c2a674","nonceStr":"abcdefg","timeStamp":1474089196317,"corpId":"dingbb4b33cbdeb6e17035c2f4657eb6378f"}'
 			}
 		);
 });
@@ -102,7 +92,7 @@ function sign(params) {
     console.log('signature: ' + signature);
     return signature;
 }
-
+//weixin router
 // router.get('/', function(req, res) {
 //   res.render('weixin', { title: 'Main' });
 // });

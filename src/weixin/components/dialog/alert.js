@@ -29,7 +29,6 @@ class Alert extends React.Component {
                 default: type === 'default',
                 primary: type === 'primary'
             });
-
             return (
                 <a key={idx} href="javascript:;" {...others} className={className}>{label}</a>
             );
