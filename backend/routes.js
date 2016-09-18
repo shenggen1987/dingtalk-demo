@@ -1,3 +1,3 @@
 module.exports = function(app) {
-	app.use('/api/movies', require('./routes/movies.js'));
+	// app.use('/api/movies', require('./routes/movies.js'));
 };
