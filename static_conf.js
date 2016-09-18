@@ -10,6 +10,7 @@ module.exports = {
         		corpId: 'dingbb4b33cbdeb6e17035c2f4657eb6378f',
     				secret: 'lB_t9hN60kOat5v81sWGwv_QKJJPE4OjoAJHI20SsFWW1-R80PeNlM6c1vOLDXaT'
         	}
-        }
+        },
+        project: 'wiexin' //dingtalk or weixin
     }
 };

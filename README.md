@@ -1,3 +1,6 @@
+npm install supervisor -g
+
+
 dingtalk
 =====================
 
