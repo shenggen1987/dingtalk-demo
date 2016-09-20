@@ -1,2 +1,2 @@
-const Button = SaltUI.Button
+const Button = SaltUI.Button;
 export default Button;
