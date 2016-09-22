@@ -21,7 +21,7 @@ module.exports = {
 			  var timeStamp = new Date().getTime();
 			  // var signedUrl = decodeURIComponent(this.href);
               // console.log(this.href);
-              var signedUrl = decodeURIComponent('http://localhost:3000/#/login?_k=6ds970');
+              var signedUrl = decodeURIComponent( config.host + ':' + config.port + '/#/login?_k=6ds970');
 			  async.waterfall([
 						function(callback){
 							invoke('/gettoken', {corpid: corpId, corpsecret: secret}, callback)

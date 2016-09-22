@@ -12,6 +12,8 @@ module.exports = {
                 agentId: 40592928
         	}
         },
+        host: "http://localhost",
+        port: 3000,
         project: 'dingtalk' //dingtalk or weixin
     }
 };
