@@ -1,6 +1,7 @@
 var config = require('../../backend/config');
 var async = require('async');
 
+var http = require('http');
 var https = require("https");
 var querystring = require('querystring');
 var url = require('url');
@@ -10,49 +11,61 @@ var crypto = require('crypto');
 const OAPI_HOST = 'https://oapi.dingtalk.com';
 const corpId = config.dingtalk.jsapi.corpId;
 const secret = config.dingtalk.jsapi.secret;
-
+const agentId = config.dingtalk.jsapi.agentId;
+var access_token;
 module.exports = {
     Dingtalk: function (req, res, next) {
         // res.cookie('cookiename','i am a cookie',{ maxAge: 24*60*60*1000,httpOnly:true, path:'/'});
         console.log(req.cookies);
         var nonceStr = 'abcdefg';
 			  var timeStamp = new Date().getTime();
-			  var signedUrl = decodeURIComponent(this.href);
-
-			  // async.waterfall([
-					// 	function(callback){
-					// 		invoke('/gettoken', {corpid: corpId, corpsecret: secret}, callback)
-					// 	},
-					// 	function(result, callback){
-					// 	  invoke('/get_jsapi_ticket', {type: 'jsapi', access_token: result['access_token']}, callback)
-					// 	}
-					// ], function (err, result) {
-					//    console.log(result);
-					//    var ticket = result['ticket']
-					//    var signature = sign({
-			  //           nonceStr: nonceStr,
-			  //           timeStamp: timeStamp,
-			  //           url: signedUrl,
-			  //           ticket: ticket
-			  //       });
-			  //       var result = {
-			  //           signature: signature,
-			  //           nonceStr: nonceStr,
-			  //           timeStamp: timeStamp,
-			  //           corpId: corpId
-			  //       };
-			  //       res.render('index', { title: 'Main', config: JSON.stringify(result)});
-					// });
-
-			  	res.render('index', 
-			  		{ 
-			  			title: 'Main', 
-			  			config: '{"signature":"98fbc01b8e962c708ab6f5477bb9b7dde2c2a674","nonceStr":"abcdefg","timeStamp":1474089196317,"corpId":"dingbb4b33cbdeb6e17035c2f4657eb6378f"}'
+			  // var signedUrl = decodeURIComponent(this.href);
+              // console.log(this.href);
+              var signedUrl = decodeURIComponent('http://localhost:3000/#/login?_k=6ds970');
+			  async.waterfall([
+						function(callback){
+							invoke('/gettoken', {corpid: corpId, corpsecret: secret}, callback)
+						},
+						function(result, callback){
+                            access_token = result['access_token'];
+						    invoke('/get_jsapi_ticket', {type: 'jsapi', access_token: result['access_token']}, callback)
 						}
-					);
+					], function (err, result) {
+					   console.log(result);
+					   var ticket = result['ticket']
+					   var signature = sign({
+			            nonceStr: nonceStr,
+			            timeStamp: timeStamp,
+			            url: signedUrl,
+			            ticket: ticket
+			        });
+			        var result = {
+			            signature: signature,
+			            nonceStr: nonceStr,
+			            timeStamp: timeStamp,
+			            corpId: corpId,
+                        agentId: agentId,
+                        access_token: access_token
+			        };
+			        res.render('index', { title: 'Main', config: JSON.stringify(result)});
+					});
+
+			  // 	res.render('index', 
+			  // 		{ 
+			  // 			title: 'Main', 
+			  // 			config: '{"signature":"98fbc01b8e962c708ab6f5477bb9b7dde2c2a674","nonceStr":"abcdefg","timeStamp":1474089196317,"corpId":"dingbb4b33cbdeb6e17035c2f4657eb6378f"}'
+					// 	}
+					// );
     },
     Weixin: function (req, res, next) {
         res.render('weixin', { title: 'Main' });
+    },
+    Login: function (req, res, next) {
+        console.log(req.body);
+        invoke('/user/getuserinfo', {code: req.body.code, accessToken: req.body.access_token}, function (data) {
+            console.log(data);
+            res.send(data);
+        })
     }
 };
 function invoke(path, params, cb) {

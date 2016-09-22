@@ -2,7 +2,7 @@ const { Router, Route, IndexRoute, Link, hashHistory } = ReactRouter;
 
 import Index from './pages/index';
 import Detail from './pages/detail';
-
+import Login from './pages/login';
 class App extends React.Component {
   render() {
     return (
@@ -18,6 +18,7 @@ const routes = (
 	  <Route path="/" component={App}>
 	  	<IndexRoute component={Index}/>
 	    <Route path="/detail" component={Detail}/>
+      <Route path="/login" component={Login}/>
 	  </Route>
 	</Router>
 );

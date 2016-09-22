@@ -8,6 +8,7 @@ var Index = require('./controller/index');
 config.project = config.project || 'dingtalk';
 if(config.project === 'dingtalk'){
 	router.get('/', Index.Dingtalk);
+	router.post('/api/login', Index.Login);
 }else{
 	//weixin router
 	router.get('/', Index.Weixin);
