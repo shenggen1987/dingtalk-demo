@@ -13,6 +13,8 @@ const secret = config.dingtalk.jsapi.secret;
 
 module.exports = {
     Dingtalk: function (req, res, next) {
+        // res.cookie('cookiename','i am a cookie',{ maxAge: 24*60*60*1000,httpOnly:true, path:'/'});
+        console.log(req.cookies);
         var nonceStr = 'abcdefg';
 			  var timeStamp = new Date().getTime();
 			  var signedUrl = decodeURIComponent(this.href);

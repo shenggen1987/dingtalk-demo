@@ -55,6 +55,7 @@
     "build": "cross-env NODE_TYPE=dingmobile webpack --progress --colors -p",
     "buildweixin": "cross-env NODE_TYPE=weixin webpack --progress --colors -p",
     "server": "supervisor node bin/www",
-    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/client/setup.js"
+    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/client/setup.js",
+    "proto": "sh ./proto.sh"
   }
 }

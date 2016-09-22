@@ -22,6 +22,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//middleware
+app.use(function(req, res, next) {
+    console.log('middleware...');
+    next();
+});
 
 app.use('/', routes);
 require('./backend/routes.js')(app);
