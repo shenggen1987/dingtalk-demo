@@ -22,7 +22,11 @@ class AuthCode extends React.Component {
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data) {
-                                    alert(data);
+                                    if (data && 0 === data.errcode) {
+                                        window.location.href = '/';
+                                    }else{
+                                        alert(data);
+                                    }
                                 },
                                 error: function (xhr, errorType) {
                                     alert(errorType);
