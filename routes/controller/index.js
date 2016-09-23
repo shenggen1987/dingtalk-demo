@@ -61,9 +61,9 @@ module.exports = {
         res.render('weixin', { title: 'Main' });
     },
     Login: function (req, res, next) {
-        console.log(req.body);
-        invoke('/user/getuserinfo', {code: req.body.code, accessToken: req.body.access_token}, function (data) {
+        invoke('/user/getuserinfo', {code: req.body.code, access_token: req.body.access_token}, function (err, data) {
             console.log(data);
+            res.cookie('userinfo', data, { maxAge: 24*60*60*1000, httpOnly:true, path:'/'});
             res.send(data);
         })
     }

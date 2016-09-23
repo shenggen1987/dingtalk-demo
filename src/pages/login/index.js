@@ -15,19 +15,17 @@ class AuthCode extends React.Component {
                     dd.runtime.permission.requestAuthCode({
                         corpId: _config.corpId, //企业id,
                         onSuccess: function (info) {
-                            alert('authcode: ' + info.code);
                             $.ajax({
                                 url: '/api/login',
                                 type:"POST",
                                 data: {"access_token":_config.access_token,"code":info.code},
                                 dataType:'json',
                                 timeout: 900,
-                                success: function (data, status, xhr) {
-                                    var info = JSON.parse(data);
-                                    alert(info);
+                                success: function (data) {
+                                    alert(data);
                                 },
-                                error: function (xhr, errorType, error) {
-                                    alert(errorType + ', ' + error);
+                                error: function (xhr, errorType) {
+                                    alert(errorType);
                                 }
                             });
                         },
