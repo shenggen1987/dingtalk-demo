@@ -24,13 +24,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //middleware
 app.use(function(req, res, next) {
-    console.log('middleware...');
-    if(!req.cookies.userinfo){
-        return res.redirection('/#/login?_k=6ds970');
-    }else{
-        next();
-    }
-    // next();
+    // console.log('middleware...');
+    // if(!req.cookies.userinfo){
+    //     return res.redirection('/#/login?_k=6ds970');
+    // }else{
+    //     next();
+    // }
+    next();
 });
 
 app.use('/', routes);

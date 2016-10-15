@@ -3,6 +3,7 @@ const { Router, Route, IndexRoute, Link, hashHistory } = ReactRouter;
 import Index from './pages/index';
 import Detail from './pages/detail';
 import Login from './pages/login';
+import Iscroll from './pages/iscroll';
 class App extends React.Component {
   render() {
     return (
@@ -19,6 +20,7 @@ const routes = (
 	  	<IndexRoute component={Index}/>
 	    <Route path="/detail" component={Detail}/>
       <Route path="/login" component={Login}/>
+      <Route path="/iscroll" component={Iscroll}/>
 	  </Route>
 	</Router>
 );
