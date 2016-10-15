@@ -50,7 +50,7 @@
   },
   "main": "./index.js",
   "scripts": {
-    "start": "cross-env NODE_TYPE=dingmobile webpack --progress --colors --watch -d",
+    "start": "sh ./bind.sh",
     "startweixin": "cross-env NODE_TYPE=weixin webpack --progress --colors --watch -d",
     "build": "cross-env NODE_TYPE=dingmobile webpack --progress --colors -p",
     "buildweixin": "cross-env NODE_TYPE=weixin webpack --progress --colors -p",

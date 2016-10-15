@@ -4,6 +4,8 @@ import Index from './pages/index';
 import Detail from './pages/detail';
 import Login from './pages/login';
 import Iscroll from './pages/iscroll';
+import qjdsolt from './pages/qjdsolt';
+
 class App extends React.Component {
   render() {
     return (
@@ -21,6 +23,7 @@ const routes = (
 	    <Route path="/detail" component={Detail}/>
       <Route path="/login" component={Login}/>
       <Route path="/iscroll" component={Iscroll}/>
+      <Route path="/qjdsolt" component={qjdsolt}/>
 	  </Route>
 	</Router>
 );
